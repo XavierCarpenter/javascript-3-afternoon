@@ -10,20 +10,21 @@
 
 // Do not edit the code below.
 var carDetails = {
-  color: 'red',
-  make: 'toyota',
-  model: 'tacoma',
+  color: "red",
+  make: "toyota",
+  model: "tacoma",
   year: 1994
-}
+};
 // Do not edit the code above.
 
 /*
   Use object destructuring to save the property values from the object carDetails into new variables. 
 */
 
-//Code Here
-
-
+const color = carDetails.color;
+const { make } = carDetails;
+const { model } = carDetails;
+const { year } = carDetails;
 
 ////////// PROBLEM 2 //////////
 
@@ -33,15 +34,15 @@ var carDetails = {
   The property names are firstName, lastName, and title.
 */
 
-function greeting( obj ) {
-  //Code Here
-  
+function greeting(obj) {
+  const { firstName } = obj;
+  const { lastName } = obj;
+  const { title } = obj;
+
   // Do not edit the code below.
-  return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
+  return "Hello, " + title + " " + firstName + " " + lastName + "!";
   // Do not edit the code above.
 }
-
-
 
 ////////// PROBLEM 3 //////////
 
@@ -53,9 +54,15 @@ function greeting( obj ) {
   Sum up the values and return the total number.
 */
 
-//Code Here
+function totalPopulation(obj) {
+  const { utah } = obj;
+  const { california } = obj;
+  const { texas } = obj;
+  const { arizona } = obj;
 
-
+  let total = utah + california + texas + arizona;
+  return total;
+}
 
 ////////// PROBLEM 4 //////////
 
@@ -67,9 +74,17 @@ function greeting( obj ) {
   Push these new variables to an array and return the array. 
 */
 
-//Code Here
+function ingredients(obj) {
+  const { carb } = obj;
+  const { fat } = obj;
+  const { protein } = obj;
 
-
+  newArr = [];
+  newArr.push(obj.carb);
+  newArr.push(obj.fat);
+  newArr.push(obj.protein);
+  return newArr;
+}
 
 ////////// PROBLEM 5 //////////
 
@@ -85,9 +100,12 @@ function greeting( obj ) {
   Find the smallest number of the three and return that number.
 */
 
-//Code Here
-
-
+function largeNumbers(obj) {
+  let result = Object.keys(obj).map(function(key) {
+    return obj[key];
+  });
+  return Math.min.apply(Math, result);
+}
 
 ////////// PROBLEM 6 //////////
 
@@ -97,6 +115,14 @@ function greeting( obj ) {
   Find the longest array and return that array.
 */
 
-//Code Here
-
-
+function numberGroups({ a, b, c }) {
+  let longest;
+  if (a.length > b.length && a.length > c.length) {
+    longest = a;
+  } else if (b.length > a.length && b.length > c.length) {
+    longest = b;
+  } else if (c.length > a.length && c.length > b.length) {
+    longest = c;
+  }
+  return longest;
+}
