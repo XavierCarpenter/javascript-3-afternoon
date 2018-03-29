@@ -21,8 +21,11 @@ const mixedNumbers = [6, 3, 1, 7, 5, 2, 6, 8, 9, 4, 2, 7, 9, 3, 1, 8, 4, 3];
 */
 
 //Code Here
-let evenNumbers = mixedNumbers.filter((element, index, wholeArray) => {
-  element % 2 === 0;
+let evenNumbers = [];
+evenNumbers = mixedNumbers.filter((e) => {
+  if (e % 2 === 0) {
+    return true;
+  }
 });
 
 ////////// PROBLEM 2 //////////
@@ -44,7 +47,10 @@ const prices = [15.0, 23.0, 78.0, 34.0, 12.0, 86.0, 12.0, 79.0, 32.0];
 */
 
 //Code Here
-let postTaxPrices; // = prices.map(/* Provide Your Callback Here );
+let postTaxPrices = [];
+postTaxPrices = prices.map((e) => {
+  e * 1.07;
+});
 
 ////////// PROBLEM 3 //////////
 
@@ -61,7 +67,14 @@ const populations = [8175133, 3792621, 2695598, 2100263];
 */
 
 //Code Here
-let totalPopulation; //  = populations.reduce(/* Provide Your Callback Here */)
+let totalPopulation = populations.reduce(function(
+  runningTotal,
+  curElement,
+  curIndex,
+  wholeArray
+) {
+  return runningTotal + curElement;
+});
 
 ////////// PROBLEM 4 //////////
 
@@ -103,7 +116,11 @@ const monstersInYourPocket = [
 */
 
 //Code Here
-let myStrongest; // = monstersInYourPocket.filter(/* Provide Your Callback Here */)
+let myStrongest = monstersInYourPocket.filter(function(arr) {
+  if (arr.CP > 200) {
+    return true;
+  }
+});
 
 ////////// PROBLEM 5 //////////
 
@@ -125,8 +142,7 @@ const orders = [
 /*
   Use a high order method to get sum of all the order totals
 */
-
-let ordersTotal; //Code Here
+let ordersTotal = orders.map(obj => obj.price * (1 + obj.tax));
 
 ////////// PROBLEM 6 //////////
 
@@ -159,4 +175,17 @@ const purchases = [
   Use a high order method to create to get the sum of bobsTotal.
 */
 
-let bobsTotal; //Code Here
+// let bobsTotal = purchaces.reduce((curElement, curTotal) => {
+//   let total = 0;
+//   if (curElement == 'Bob'){
+//     total += curTotal;
+//   }
+//   return curTotal;
+// });
+
+let bobsTotal = purchases
+  .filter(obj => obj.owner === "Bob")
+  .reduce((runningTotal, currentElem) => ({
+    price: runningTotal.price + currentElem.price
+  })).price;
+console.log(bobsTotal);
